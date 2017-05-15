@@ -2,7 +2,7 @@ var express = require('express'),
     request = require('superagent'),
     should = require('should'),
     csv = require('../../'),
-    app = express.createServer();
+    app = express['createServer'] ? express.createServer() : express();
 
 app.get('/test/1', function(req, res) {
   res.csv([
