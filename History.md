@@ -15,12 +15,12 @@
   * Add istanbul dev dependency for code coverage statistics; update /package.json to add "test with coverage" scripts
   * Existing tests passed on node versions: 0.10.x, 0.12.x, 4.8.x, 6.10.x, 7.9.x
 
-1.2.3 / Date Unknown
+1.2.3 / 2017-03-28
 =======================
 
   * (This history entry added by lpage on 2017-05-14)
   * Forked and version bump by jczaplew
-  * Code updates for 1.2.3 not specified in history file by jczaplew
+  * Code updates for 1.2.3 not specified in history file
 
 1.0.0 / 2015-09-18
 ==================
