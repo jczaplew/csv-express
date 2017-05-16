@@ -7,7 +7,7 @@
   * Added JSHint "ignore" annotations to /lib/csv-express.js
   * Bumped version from 1.2.3 to 1.2.9 due to code refactoring
   * Updated /package.json to reflect version bump and latest author
-  * Small performance improvement as compared to 1.2.3, per /support/benchmark
+  * Small performance improvement as compared to 1.2.3
   * No change in public api from 1.2.3
   * Updated /support/benchmark.js to account for express().createServer() not working in some cases
   * Cleaned up /support/benchmark.js to satisfy JSHint
