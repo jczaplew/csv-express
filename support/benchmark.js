@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-var express = require('express')
-  , request = require('superagent')
-  , csv = require('../')
-  , app = express.createServer()
-  , data = [];
+var express = require('express'),
+    request = require('superagent'),
+    csv = require('../'), //jshint ignore:line
+    app = express['createServer'] ? express().createServer() : express(),
+    data = [];
 
 for (var i = 0; i < 1000; ++i) {
   var record = [];
@@ -21,13 +21,13 @@ app.get('/', function(req, res) {
 app.listen(8383);
 
 function benchmark(time) {
-  var url = 'http://127.0.0.1:8383/'
-    , label = 'benchmark - ' + time + 'times'
-    , fn = function() {
-        --time || !function() {
+  var url = 'http://127.0.0.1:8383/',
+      label = 'benchmark - ' + time + 'times',
+      fn = function() {
+        --time || (function() {
           console.timeEnd(label);
           process.exit(0);
-        }();
+        }()); //jshint ignore:line
       };
 
   console.time(label);

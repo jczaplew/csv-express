@@ -1,8 +1,9 @@
 {
   "name": "csv-express",
   "description": "Adds a CSV response method to expressjs applications.",
-  "version": "1.2.1",
-  "author": "John J Czaplewski (forked from Seiya Konno)",
+  "version": "1.2.9",
+  "author": "Lawrence Page (forked from John J Czaplewski)",
+  "license": "MIT",
   "contributors": [
     {
       "name": "Seiya Konno",
@@ -23,6 +24,8 @@
   ],
   "devDependencies": {
     "express": "4.x",
+    "istanbul": "^0.4.5",
+    "jsdoc": "^3.4.3",
     "mocha": "^2.3.2",
     "should": "^7.1.0",
     "superagent": "^1.4.0"
@@ -32,7 +35,7 @@
     "expressjs",
     "csv"
   ],
-  "repository": "git://github.com/jczaplew/csv-express.git",
+  "repository": "git@github.com:lpage/csv-express.git",
   "main": "index.js",
   "engines": {
     "node": "0.6 || 0.8 || 0.10 || 0.12 || 4.x"
@@ -42,7 +45,12 @@
     "test-express-3": "npm install express@3.x && mocha test/3+",
     "test-express-4": "npm install express@4.x && mocha test/3+",
     "test": "npm run test-express-2 && npm run test-express-3 && npm run test-express-4",
-    "prepublish": "make test"
+    "gendoc": "jsdoc --readme ./Readme.md lib/csv-express.js -d ./docs",
+    "test-express-2-with-coverage": "npm install express@2.x && istanbul cover -x ./test/2/*.js _mocha -- -R spec ./test/2",
+    "test-express-3-with-coverage": "npm install express@3.x && istanbul cover -x ./test/3+/*.js _mocha -- -R spec ./test/3+",
+    "test-express-4-with-coverage": "npm install express@4.x && istanbul cover -x ./test/3+/*.js _mocha -- -R spec ./test/3+",
+    "test-with-coverage": "npm run test-express-2-with-coverage && npm run test-express-3-with-coverage && npm run test-express-4-with-coverage",
+    "prepublish": "make test && make gendoc"
   },
   "dependencies": {
     "iconv-lite": "^0.4.13"

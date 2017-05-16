@@ -1,11 +1,39 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: csv-express.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: csv-express.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * csv-express:
- * Forked and refactored (without public api changes) by Lawrence Page <lpage2008@gmail.com>
- * Forked and modified by John J Czaplewski <jczaplew@gmail.com>
+ * Forked and refactored (without public api changes) by Lawrence Page &lt;lpage2008@gmail.com>
+ * Forked and modified by John J Czaplewski &lt;jczaplew@gmail.com>
  * @copyright 2011, 2017
- * @author Seiya Konno <nulltask@gmail.com> (Original Author)
- * @author John J Czaplewski <jczaplew@gmail.com> (Contributor)
- * @author Lawrence Page <lpage2008@gmail.com> (Contributor)
+ * @author Seiya Konno &lt;nulltask@gmail.com> (Original Author)
+ * @author John J Czaplewski &lt;jczaplew@gmail.com> (Contributor)
+ * @author Lawrence Page &lt;lpage2008@gmail.com> (Contributor)
  * @license MIT
  */
 
@@ -39,7 +67,7 @@ function filterFloat(value) {
  *
  * @param {Mixed} field
  * @return {String}
- * @author Lawrence Page <lpage2008@gmail.com>
+ * @author Lawrence Page &lt;lpage2008@gmail.com>
  * @api private
  */
 function doReplace(field) {
@@ -54,13 +82,13 @@ function doReplace(field) {
  * @api private
  */
 function escape(field) {
-  if (exports.ignoreNullOrUndefined && field == undefined) { //jshint ignore:line
+  if (exports.ignoreNullOrUndefined &amp;&amp; field == undefined) { //jshint ignore:line
     return '';
   }
   if (exports.preventCast) {
     return '=' + doReplace(field);
   }
-  if (!isNaN(filterFloat(field)) && isFinite(field)) {
+  if (!isNaN(filterFloat(field)) &amp;&amp; isFinite(field)) {
     return parseFloat(field);
   }
   return doReplace(field);
@@ -72,7 +100,7 @@ function escape(field) {
  *
  * @param {Array} data
  * @return {Array}
- * @author Lawrence Page <lpage2008@gmail.com>
+ * @author Lawrence Page &lt;lpage2008@gmail.com>
  * @api private
  */
 function getHeaderRow(data) {
@@ -98,7 +126,7 @@ function getHeaderRow(data) {
  * @param {Object} item
  * @param {Array} key - curried
  * @return {Array}
- * @author Lawrence Page <lpage2008@gmail.com>
+ * @author Lawrence Page &lt;lpage2008@gmail.com>
  * @api private
  */
 function itemMapper(item) {
@@ -114,7 +142,7 @@ function itemMapper(item) {
  * @param {Array} headerRow
  * @param {Mixed} item - curried
  * @return {Array}
- * @author Lawrence Page <lpage2008@gmail.com>
+ * @author Lawrence Page &lt;lpage2008@gmail.com>
  * @api private
  */
 function generateDataRow(headerRow) {
@@ -136,7 +164,7 @@ function generateDataRow(headerRow) {
  * @param {String} acc
  * @param {String} item
  * @return {String}
- * @author Lawrence Page <lpage2008@gmail.com>
+ * @author Lawrence Page &lt;lpage2008@gmail.com>
  * @api private
  */
 function generateDataRows(acc, item) {
@@ -150,7 +178,7 @@ function generateDataRows(acc, item) {
  * @param {Boolean} csvHeaders
  * @param {String} charset
  * @return {String}
- * @author Lawrence Page <lpage2008@gmail.com>
+ * @author Lawrence Page &lt;lpage2008@gmail.com>
  * @api private
  */
 function toCsv(data, csvHeaders, charset) {
@@ -167,11 +195,11 @@ function toCsv(data, csvHeaders, charset) {
  *
  * @param {Mixed} [obj]
  * @return {Boolean}
- * @author Lawrence Page <lpage2008@gmail.com>
+ * @author Lawrence Page &lt;lpage2008@gmail.com>
  * @api private
  */
 function isObject(obj) {
-  return obj && obj instanceof Object;
+  return obj &amp;&amp; obj instanceof Object;
 }
 
 /**
@@ -179,7 +207,7 @@ function isObject(obj) {
  * assumes caller will set response context
  *
  * @param {Object} headers
- * @author Lawrence Page <lpage2008@gmail.com>
+ * @author Lawrence Page &lt;lpage2008@gmail.com>
  * @api private
  */
 function setHeaders(headers) {
@@ -199,13 +227,13 @@ function setHeaders(headers) {
  *
  * @param {Mixed} [status]
  * @return {Boolean}
- * @author Lawrence Page <lpage2008@gmail.com>
+ * @author Lawrence Page &lt;lpage2008@gmail.com>
  * @api private
  */
 function isValidResponseCode(status) {
-  return status &&
-    Number.isInteger(status) &&
-    status >= 200 && status < 600;
+  return status &amp;&amp;
+    Number.isInteger(status) &amp;&amp;
+    status >= 200 &amp;&amp; status &lt; 600;
 }
 
 /**
@@ -215,7 +243,7 @@ function isValidResponseCode(status) {
  *
  * @param {Number} [status]
  * @return {Boolean}
- * @author Lawrence Page <lpage2008@gmail.com>
+ * @author Lawrence Page &lt;lpage2008@gmail.com>
  * @api private
  */
 function setResponseCode(status) {
@@ -236,7 +264,7 @@ function setResponseCode(status) {
  * @param {Boolean} csvHeaders - If true uses the keys of the objects in {obj} to set a header row
  * @param {Object} [headers] - Optional HTTP response headers
  * @param {Number} [status] - Optional status code
- * @author Lawrence Page <lpage2008@gmail.com>
+ * @author Lawrence Page &lt;lpage2008@gmail.com>
  * @api public
  */
 res.csv = function(data, csvHeaders, headers, status) {
@@ -252,3 +280,26 @@ res.csv = function(data, csvHeaders, headers, status) {
 
   return this.send(body);
 };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#doReplace">doReplace</a></li><li><a href="global.html#escape">escape</a></li><li><a href="global.html#filterFloat">filterFloat</a></li><li><a href="global.html#generateDataRow">generateDataRow</a></li><li><a href="global.html#generateDataRows">generateDataRows</a></li><li><a href="global.html#getHeaderRow">getHeaderRow</a></li><li><a href="global.html#isObject">isObject</a></li><li><a href="global.html#isValidResponseCode">isValidResponseCode</a></li><li><a href="global.html#itemMapper">itemMapper</a></li><li><a href="global.html#setHeaders">setHeaders</a></li><li><a href="global.html#setResponseCode">setResponseCode</a></li><li><a href="global.html#toCsv">toCsv</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon May 15 2017 11:37:51 GMT-0700 (PDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
