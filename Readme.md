@@ -62,6 +62,14 @@ app.get('/headers', function(req, res) {
   ], true)
 })
 
+// Add custom name
+app.get('/filename', function(req, res) {
+  res.csv([
+    {"a": 1, "b": 2, "c": 3},
+    {"a": 4, "b": 5, "c": 6}
+  ], true, undefined, undefined, 'custom-file-name.csv')
+})
+
 // Add response headers and status code (will throw a 500 error code)
 app.get('/all-params', function(req, res) {
   res.csv([
@@ -69,7 +77,7 @@ app.get('/all-params', function(req, res) {
     {"a": 4, "b": 5, "c": 6}
   ], true, {
     "Access-Control-Allow-Origin": "*"
-  }, 500)
+  }, 500, 'custom-name.csv')
 })
 
 app.listen(3000)
